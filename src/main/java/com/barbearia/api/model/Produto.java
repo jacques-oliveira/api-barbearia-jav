@@ -1,14 +1,12 @@
 package com.barbearia.api.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+@Entity
 @Table(name = "Produtos")
 public class Produto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
     private String Nome;
     private String descricao;
@@ -73,4 +71,15 @@ public class Produto {
         this.categoriaId = categoriaId;
     }
 
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "Id=" + Id +
+                ", Nome='" + Nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", preco=" + preco +
+                ", imagemUrl='" + imagemUrl + '\'' +
+                ", categoriaId=" + categoriaId +
+                '}';
+    }
 }

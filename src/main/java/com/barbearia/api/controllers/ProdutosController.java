@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProdutosController {
     @Autowired
     private ProdutoRepository produtoRepository;
+
     @GetMapping(value = "/produtos")
     public @ResponseBody Iterable<Produto> obterTodosProdutos() {
         try{

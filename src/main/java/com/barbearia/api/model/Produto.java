@@ -6,13 +6,16 @@ import jakarta.persistence.*;
 @Table(name = "Produtos")
 public class Produto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String Nome;
     private String descricao;
     private double preco;
     private String imagemUrl;
-    private int categoriaId;
+
+    @ManyToOne
+    @JoinColumn(name = "categoriaId")
+    private Categoria categoria;
 
     public Produto(long id, String nome, String descricao, double preco, String imagemUrl, int categoriaId) {
         Id = id;
@@ -20,7 +23,6 @@ public class Produto {
         this.descricao = descricao;
         this.preco = preco;
         this.imagemUrl = imagemUrl;
-        this.categoriaId = categoriaId;
     }
 
     public long getId() {
@@ -63,14 +65,6 @@ public class Produto {
         this.imagemUrl = imagemUrl;
     }
 
-    public int getCategoriaId() {
-        return categoriaId;
-    }
-
-    public void setCategoriaId(int categoriaId) {
-        this.categoriaId = categoriaId;
-    }
-
     @Override
     public String toString() {
         return "Produto{" +
@@ -79,7 +73,6 @@ public class Produto {
                 ", descricao='" + descricao + '\'' +
                 ", preco=" + preco +
                 ", imagemUrl='" + imagemUrl + '\'' +
-                ", categoriaId=" + categoriaId +
                 '}';
     }
 }

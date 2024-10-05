@@ -5,9 +5,7 @@ import com.barbearia.api.model.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,4 +27,13 @@ public class ProdutosController {
         }
     }
 
+    @PostMapping
+    public ResponseEntity<Produto> Create(@RequestBody Produto produto){
+        try {
+            Produto novoProduto = produtoRepository.save(produto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

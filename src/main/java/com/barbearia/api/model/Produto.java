@@ -17,6 +17,7 @@ public class Produto {
     @JoinColumn(name = "categoriaId")
     private Categoria categoria;
 
+    public Produto(){}
     public Produto(long id, String nome, String descricao, double preco, String imagemUrl) {
         Id = id;
         Nome = nome;

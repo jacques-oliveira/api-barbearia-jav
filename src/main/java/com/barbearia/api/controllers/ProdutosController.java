@@ -13,11 +13,12 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @RestController
+@RequestMapping("/produtos")
 public class ProdutosController {
     @Autowired
     private ProdutoService produtoService;
 
-    @GetMapping(value = "/produtos")
+    @GetMapping
     public ResponseEntity<List<Produto>> obterTodosProdutos() {
         try{
             var produtos = produtoService.findAll();
@@ -29,7 +30,7 @@ public class ProdutosController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> Create(@RequestBody Produto produto){
+    public ResponseEntity<Produto> create(@RequestBody Produto produto){
         try {
             Produto novoProduto = produtoService.create(produto);
             return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);

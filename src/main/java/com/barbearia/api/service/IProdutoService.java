@@ -1,7 +1,6 @@
 package com.barbearia.api.service;
 
 import com.barbearia.api.model.Produto;
-
 import java.util.List;
 
 public interface IProdutoService {

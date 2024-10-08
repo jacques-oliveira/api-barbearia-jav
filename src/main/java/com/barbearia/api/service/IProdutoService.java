@@ -7,4 +7,5 @@ public interface IProdutoService {
     Produto findById(Long id);
     List<Produto> findAll();
     Produto create(Produto produto);
+    boolean delete(Long id);
 }

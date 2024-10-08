@@ -2,6 +2,8 @@ package com.barbearia.api.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name= "Categorias")
 public class Categoria {
@@ -10,6 +12,9 @@ public class Categoria {
     private long id;
     private String nome;
     private String descricao;
+
+    @OneToMany(mappedBy = "categoria")
+    private Set<Produto> produtos;
 
     public long getId() {
         return id;

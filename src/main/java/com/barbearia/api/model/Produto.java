@@ -17,7 +17,7 @@ public class Produto {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "categoriaId", nullable = false)
+    @JoinColumn(name = "categoriaid", nullable = false)
     @Schema(description = "ID da categoria associada")
     private Categoria categoria;
 
@@ -68,6 +68,14 @@ public class Produto {
 
     public void setImagemUrl(String imagemUrl) {
         this.imagemUrl = imagemUrl;
+    }
+
+    public @NotNull Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(@NotNull Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override

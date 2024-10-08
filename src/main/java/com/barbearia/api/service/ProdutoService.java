@@ -43,4 +43,14 @@ public class ProdutoService implements IProdutoService{
         }
         return null;
     }
+
+    public boolean delete(Long id){
+        Optional<Produto> produtoBd = _produtoRepository.findById(id);
+        if(produtoBd.isPresent()){
+            Produto produto = produtoBd.get();
+            _produtoRepository.delete(produto);
+            return true;
+        }
+        return false;
+    }
 }

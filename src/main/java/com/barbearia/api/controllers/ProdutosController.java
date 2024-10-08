@@ -2,6 +2,7 @@ package com.barbearia.api.controllers;
 
 import com.barbearia.api.Repository.ProdutoRepository;
 import com.barbearia.api.model.Produto;
+import com.barbearia.api.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,12 @@ import java.util.stream.StreamSupport;
 @RestController
 public class ProdutosController {
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private ProdutoService produtoService;
 
     @GetMapping(value = "/produtos")
     public ResponseEntity<List<Produto>> obterTodosProdutos() {
         try{
-            var produtos = produtoRepository.findAll();
+            var produtos = produtoService.findAll();
             return ResponseEntity.ok(produtos);
         }catch (Exception ex){
             System.err.println("Erro ao recuperar produtos: " + ex.getMessage());
@@ -30,7 +31,7 @@ public class ProdutosController {
     @PostMapping
     public ResponseEntity<Produto> Create(@RequestBody Produto produto){
         try {
-            Produto novoProduto = produtoRepository.save(produto);
+            Produto novoProduto = produtoService.create(produto);
             return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
         }catch (Exception ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

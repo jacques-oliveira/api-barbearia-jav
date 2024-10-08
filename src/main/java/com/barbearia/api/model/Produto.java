@@ -1,6 +1,8 @@
 package com.barbearia.api.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Produtos")
@@ -13,8 +15,10 @@ public class Produto {
     private double preco;
     private String imagemUrl;
 
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "categoriaId")
+    @JoinColumn(name = "categoriaId", nullable = false)
+    @Schema(description = "ID da categoria associada")
     private Categoria categoria;
 
     public Produto(){}

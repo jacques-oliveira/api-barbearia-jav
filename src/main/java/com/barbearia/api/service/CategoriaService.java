@@ -29,7 +29,7 @@ public class CategoriaService implements ICategoriaService{
 
     @Override
     public List<Categoria> findAll() {
-        return List.of();
+        return _categoriaRepository.findAll();
     }
 
     @Override

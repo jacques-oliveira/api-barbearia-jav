@@ -41,4 +41,14 @@ public class CategoriaService implements ICategoriaService{
         }
         return null;
     }
+    @Override
+    public boolean delete(Long id){
+        Optional<Categoria> categoriaBd = _categoriaRepository.findById(id);
+        if(categoriaBd.isPresent()){
+            Categoria categoria = categoriaBd.get();
+            _categoriaRepository.delete(categoria);
+            return true;
+        }
+        return false;
+    }
 }

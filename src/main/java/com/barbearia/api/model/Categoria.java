@@ -13,7 +13,7 @@ public class Categoria {
     private String nome;
     private String descricao;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     private Set<Produto> produtos;
 
     public long getId() {

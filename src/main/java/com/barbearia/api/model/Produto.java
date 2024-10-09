@@ -28,6 +28,14 @@ public class Produto {
 
     public Produto(){}
 
+    public Set<Agendamento> getAgendamentos() {
+        return agendamentos;
+    }
+
+    public void setAgendamentos(Set<Agendamento> agendamentos) {
+        this.agendamentos = agendamentos;
+    }
+
     public Produto(long id, String nome, String descricao, double preco, String imagemUrl) {
         Id = id;
         Nome = nome;

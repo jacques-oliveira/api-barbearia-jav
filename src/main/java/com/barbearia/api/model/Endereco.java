@@ -2,7 +2,8 @@ package com.barbearia.api.model;
 
 import jakarta.persistence.*;
 
-@Entity(name = "Enderecos")
+@Entity
+@Table(name = "Enderecos")
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

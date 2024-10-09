@@ -19,6 +19,17 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private Set<Agendamento> agendamentos;
 
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Endereco endereco;
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     public Long getId() {
         return id;
     }

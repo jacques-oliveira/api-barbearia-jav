@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Produtos")
 public class Produto {
@@ -21,7 +23,11 @@ public class Produto {
     @Schema(description = "ID da categoria associada")
     private Categoria categoria;
 
+    @ManyToMany(mappedBy = "produtos")
+    private Set<Agendamento> agendamentos;
+
     public Produto(){}
+
     public Produto(long id, String nome, String descricao, double preco, String imagemUrl) {
         Id = id;
         Nome = nome;

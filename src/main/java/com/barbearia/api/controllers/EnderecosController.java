@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -17,6 +18,12 @@ import java.util.Optional;
 public class EnderecosController {
     @Autowired
     private EnderecoService _enderecoService;
+
+    @GetMapping
+    public ResponseEntity<List<Endereco>> Get(){
+        var todosEnderecos =  _enderecoService.findAll();
+        return ResponseEntity.ok(todosEnderecos);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Endereco> Get(@PathVariable Long id){

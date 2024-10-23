@@ -52,4 +52,22 @@ public class EnderecosController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        try{
+            boolean enderecoDeletado = _enderecoService.delete(id);
+            if(enderecoDeletado){
+//                return ResponseEntity.status(HttpStatus.NO_CONTENT)
+//                        .body("Endereço removido com sucesso !");
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            }else{
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Endereço n�o encontrado - " + id);
+            }
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Ocorreu um erro ao tentar deleter o endereço - " + ex.getMessage());
+        }
+    }
 }

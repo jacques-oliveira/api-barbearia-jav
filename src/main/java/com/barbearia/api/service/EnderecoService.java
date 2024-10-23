@@ -47,6 +47,12 @@ public class EnderecoService implements IEnderecoService{
 
     @Override
     public boolean delete(Long id) {
+        Optional<Endereco> enderecoBD = _enderecoRepository.findById(id);
+        if(enderecoBD.isPresent()){
+            Endereco endereco =enderecoBD.get();
+            _enderecoRepository.delete(endereco);
+            return true;
+        }
         return false;
     }
 }

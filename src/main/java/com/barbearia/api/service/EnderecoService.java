@@ -36,6 +36,12 @@ public class EnderecoService implements IEnderecoService{
 
     @Override
     public Endereco create(Endereco endereco) {
+        Optional<Endereco> enderecoOptional = _enderecoRepository.findById(endereco.getId());
+
+        if (!enderecoOptional.isPresent()){
+            _enderecoRepository.save(endereco);
+            return endereco;
+        }
         return null;
     }
 

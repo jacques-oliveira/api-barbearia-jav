@@ -33,6 +33,9 @@ public class ProdutosController {
     public ResponseEntity<Produto> create(@RequestBody Produto produto){
         try {
             Produto novoProduto = produtoService.create(produto);
+            if (novoProduto == null){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
             return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
         }catch (Exception ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

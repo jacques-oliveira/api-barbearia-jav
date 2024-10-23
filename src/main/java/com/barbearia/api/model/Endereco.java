@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String logradouro;
     private int numero;
     private String bairro;
@@ -17,7 +17,16 @@ public class Endereco {
     @JoinColumn(name = "usuario_id",nullable = false)
     private Usuario usuario;
 
-    public Long getId() {
+    public Endereco(){}
+
+    public Endereco(Long id, String logradouro, int numero, String bairro, String cep){
+        this.id = id;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.cep = cep;
+    }
+    public long getId() {
         return id;
     }
 

@@ -13,8 +13,8 @@ public class Endereco {
     private String bairro;
     private String cep;
 
-    @OneToOne
-    @JoinColumn(name = "usuario_id",nullable = false)
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "usuario_id",nullable = true)
     private Usuario usuario;
 
     public Endereco(){}

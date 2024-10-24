@@ -58,9 +58,8 @@ public class EnderecosController {
         try{
             boolean enderecoDeletado = _enderecoService.delete(id);
             if(enderecoDeletado){
-//                return ResponseEntity.status(HttpStatus.NO_CONTENT)
-//                        .body("Endereço removido com sucesso !");
-                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+                return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                        .body("Endereço removido com sucesso !");
             }else{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body("Endereço n�o encontrado - " + id);

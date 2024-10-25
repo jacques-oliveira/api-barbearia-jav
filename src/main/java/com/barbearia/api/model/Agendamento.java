@@ -34,7 +34,7 @@ public class Agendamento {
         this.produtos = produtos;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "agendamento_produto",
             joinColumns=@JoinColumn(name = "agendamento_id"),

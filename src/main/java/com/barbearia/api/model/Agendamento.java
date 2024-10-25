@@ -19,6 +19,14 @@ public class Agendamento {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    @ManyToMany
+    @JoinTable(
+            name = "agendamento_produto",
+            joinColumns=@JoinColumn(name = "agendamento_id"),
+            inverseJoinColumns = @JoinColumn(name ="produto_id")
+    )
+    private Set<Produto> produtos;
+
     public Agendamento(Long id, LocalDateTime data, Usuario usuario, Set<Produto> produtos) {
         this.id = id;
         this.data = data;
@@ -33,14 +41,6 @@ public class Agendamento {
     public void setProdutos(Set<Produto> produtos) {
         this.produtos = produtos;
     }
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "agendamento_produto",
-            joinColumns=@JoinColumn(name = "agendamento_id"),
-            inverseJoinColumns = @JoinColumn(name ="produto_id")
-    )
-    private Set<Produto> produtos;
 
     public Agendamento(){}
 

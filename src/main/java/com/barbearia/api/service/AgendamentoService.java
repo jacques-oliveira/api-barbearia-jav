@@ -52,6 +52,16 @@ public class AgendamentoService implements IAgendamentoService{
 
     @Override
     public boolean delete(Long id) {
-        return false;
+        try{
+            Optional<Agendamento> agendamentoOptional = _agendamentoRepositoy.findById(id);
+            if (agendamentoOptional.isPresent()){
+                Agendamento agendamento = agendamentoOptional.get();
+                _agendamentoRepositoy.delete(agendamento);
+                return true;
+            }
+            return false;
+        }catch (Exception ex){
+            throw new RuntimeException("Falha na remoç�o do agendamento",ex);
+        }
     }
 }

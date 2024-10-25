@@ -23,7 +23,16 @@ public class AgendamentoService implements IAgendamentoService{
 
     @Override
     public Agendamento findById(Long id) {
-        return null;
+
+        try {
+            Optional<Agendamento> agendamentoOptional = _agendamentoRepositoy.findById(id);
+            if(agendamentoOptional.isPresent()){
+                return agendamentoOptional.get();
+            }
+            return null;
+        }catch (Exception ex){
+            throw new RuntimeException("Agendamento n�o encontrado", ex);
+        }
     }
 
     @Override

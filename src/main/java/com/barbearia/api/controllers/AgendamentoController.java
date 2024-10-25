@@ -22,6 +22,15 @@ public class AgendamentoController {
         return ResponseEntity.ok(todosAgendamentos);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Agendamento> obterAgendamentoPorId(@PathVariable Long id){
+        try{
+            Agendamento agendamento = agendamentoService.findById(id);
+            return ResponseEntity.ok(agendamento);
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
     @PostMapping
     public ResponseEntity<Agendamento> create(@RequestBody Agendamento agendamento){
         try {

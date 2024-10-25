@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AgendamentoService implements IAgendamentoService{
@@ -14,7 +15,7 @@ public class AgendamentoService implements IAgendamentoService{
 
     public AgendamentoService(AgendamentoRepository agendamentoRepository){
         try{
-            _agendamentoRepositoy = agendamentoRepository;
+            this._agendamentoRepositoy = agendamentoRepository;
         }catch (Exception ex){
             throw new RuntimeException("Falha ao buscar todos agendamentos",ex);
         }
@@ -32,6 +33,11 @@ public class AgendamentoService implements IAgendamentoService{
 
     @Override
     public Agendamento create(Agendamento agendamento) {
+        Optional<Agendamento> agendamentoOptional = _agendamentoRepositoy.findById(agendamento.getId());
+        if (!agendamentoOptional.isPresent()){
+            _agendamentoRepositoy.save(agendamento);
+            return  agendamento;
+        }
         return null;
     }
 

@@ -14,11 +14,7 @@ public class AgendamentoService implements IAgendamentoService{
     private AgendamentoRepository _agendamentoRepositoy;
 
     public AgendamentoService(AgendamentoRepository agendamentoRepository){
-        try{
-            this._agendamentoRepositoy = agendamentoRepository;
-        }catch (Exception ex){
-            throw new RuntimeException("Falha ao buscar todos agendamentos",ex);
-        }
+        this._agendamentoRepositoy = agendamentoRepository;
     }
 
     @Override

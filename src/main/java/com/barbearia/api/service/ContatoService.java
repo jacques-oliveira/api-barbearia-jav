@@ -23,7 +23,15 @@ public class ContatoService implements IContatoService{
 
     @Override
     public Contato findById(Long id) {
-        return null;
+        try{
+            Optional<Contato> contatoOptional = _contatoRepository.findById(id);
+            if(contatoOptional.isPresent()){
+                return contatoOptional.get();
+            }
+            return null;
+        }catch (Exception ex){
+            throw new RuntimeException("Erro ao buscar contato",ex);
+        }
     }
 
     @Override

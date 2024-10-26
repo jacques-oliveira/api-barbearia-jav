@@ -18,17 +18,15 @@ public class Usuario {
     private String cpf;
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
-    private String email;
     private int nivelAcesso;
 
     public Usuario(){}
 
-    public Usuario(Long id, String nome, String cpf, LocalDate dataNascimento, String email,int nivelAcesso ) {
+    public Usuario(Long id, String nome, String cpf, LocalDate dataNascimento, int nivelAcesso ) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
-        this.email = email;
         this.nivelAcesso = nivelAcesso;
     }
 
@@ -95,13 +93,5 @@ public class Usuario {
 
     public void setAgendamentos(Set<Agendamento> agendamentos) {
         this.agendamentos = agendamentos;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

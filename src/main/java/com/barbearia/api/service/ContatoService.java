@@ -5,6 +5,7 @@ import com.barbearia.api.model.Contato;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContatoService implements IContatoService{
@@ -27,7 +28,16 @@ public class ContatoService implements IContatoService{
 
     @Override
     public Contato create(Contato contato) {
-        return null;
+        try{
+            Optional<Contato> contatoOptional = _contatoRepository.findById(contato.getId());
+            if (!contatoOptional.isPresent()){
+                _contatoRepository.save(contato);
+                return contato;
+            }
+            return null;
+        }catch (Exception ex){
+            throw new RuntimeException("Houve um erro ao criar contato",ex);
+        }
     }
 
     @Override

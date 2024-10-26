@@ -10,3 +10,11 @@ atende ainda o modelo final de negócio,mas ja desempenha as operações
 CRUD.
 
 ![banco-api-java](https://github.com/user-attachments/assets/93addadf-f431-4f2e-a07d-0bf7a82e3037)
+
+## Desenvolvimento
+  - Java
+  - Maven
+  - SpringBoot
+  - JPA,Hibernate
+  - Mysql
+  - Docker

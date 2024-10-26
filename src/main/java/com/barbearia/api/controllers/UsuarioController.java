@@ -35,4 +35,13 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Usuario> delete(@PathVariable Long id){
+        try{
+
+        }catch (Exception ex){
+
+        }
+    }
 }

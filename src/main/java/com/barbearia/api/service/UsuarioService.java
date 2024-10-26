@@ -44,6 +44,16 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public boolean delete(Long id) {
-        return false;
+        Optional<Usuario> usuarioOptional = _usuarioRepository.findById(id);
+        try{
+            if (usuarioOptional.isPresent()){
+                Usuario usuario =  usuarioOptional.get();
+                _usuarioRepository.delete(usuario);
+                return true;
+            }
+            return false;
+        }catch (Exception ex){
+            throw new RuntimeException("Usuario n�o encontrado",ex);
+        }
     }
 }
